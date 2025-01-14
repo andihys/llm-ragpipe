@@ -1,3 +1,17 @@
+# This script demonstrates how to use the Ollama tool to create
+# and run custom AI models for text generation. It allows users
+# to define a model, create it using ollama create, and generate
+# responses to prompts via ollama run.
+#
+# To install the Ollama CLI, follow these steps:
+# Download and install Ollama from the official website: https://ollama.com/
+#
+# By default, the script uses the llama2:latest model. To create a new model, follow these steps:
+#
+# Open the script and set a custom model name in the OllamaModel class constructor.
+# Ensure that the new model name is valid and available in Ollama.
+# Run the script, and the model will be created automatically.
+
 import sys
 import subprocess
 from typing import List
@@ -7,18 +21,12 @@ DEFAULT_LLM = "llama2:latest"
 ALTERNATE_LLM = "moondream"
 DEFAULT_TEMPERATURE = 0.9
 DEFAULT_MAX_TOKEN = 100
-
-# Constant for buffering size
 DEFAULT_BUFFER_SIZE = 1
 
 
 class OllamaModel:
     """
     Represents a custom model for text generation using the Ollama tool.
-
-    This class provides functionality to initialize a customizable text generation model, create
-    the model using the `ollama create` command, and execute AI-driven prompts by interfacing
-    with the Ollama runtime.
 
     :ivar model_name: Name of the custom model to be used or generated.
     :type model_name: str
@@ -105,7 +113,7 @@ if __name__ == "__main__":
     model = llm
 
     # Optionally, create the model (if needed)
-    # model.create_model()
+    model.create_model()
 
     # Prompt the model with a sample input
     prompt_text = "Tell me this word 20 times: hello"
