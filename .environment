@@ -1,0 +1,10 @@
+# on this file you must have declared almost these parameters:
+#
+# AZURE_OPENAI_API_KEY=your key
+# AZURE_OPENAI_ENDPOINT=endpoint address
+# AZURE_API_VERSION=your version
+# AZURE_DEPLOYMENT=deployment
+# AZURE_DEPLOYMENT_EMBEDDING=your embedding
+#
+# TEMPERATURE=set a value
+# TOP_P=set a value
