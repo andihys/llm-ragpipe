@@ -1,8 +1,9 @@
 # This is a script that allow you
 # made an API call from your llm model.
 #
-# Is request to have set the .env file
-# on which declare all the environment variables.
+# You must have set the .env file
+# on which declare all the environment variables
+# that is required for the API call
 
 import logging
 from typing import Optional
