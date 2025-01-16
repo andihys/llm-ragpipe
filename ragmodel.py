@@ -1,3 +1,7 @@
+# Implement a Retrieval-Augmented Generation (RAG) pipeline.
+# This includes a retriever, document combination,
+# and GPT model integration for answering queries.
+
 from pprint import pprint
 from llm import load_gpt_model, logger
 from langchain.chains import create_retrieval_chain
