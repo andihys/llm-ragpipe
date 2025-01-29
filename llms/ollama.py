@@ -6,7 +6,9 @@
 # To install the Ollama CLI, follow these steps:
 # Download and install Ollama from the official website: https://ollama.com/
 #
-# By default, the script uses the llama2:latest model. To create a new model, follow these steps:
+# By default, the script uses as default model the llama2:latest model, but you can
+# choose alternate models on base what you want to use.
+# To create a new model, follow these steps:
 #
 # Open the script and set a custom model name in the OllamaModel class constructor.
 # Ensure that the new model name is valid and available in Ollama.
@@ -18,7 +20,7 @@ from typing import List
 
 # Default configuration constants
 DEFAULT_LLM = "llama2:latest"
-ALTERNATE_LLM = "moondream"
+ALTERNATE_LLM = ["moondream", "deepseek-r1"]
 DEFAULT_TEMPERATURE = 0.9
 DEFAULT_MAX_TOKEN = 100
 DEFAULT_BUFFER_SIZE = 1
