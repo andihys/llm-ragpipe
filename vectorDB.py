@@ -6,7 +6,7 @@
 
 from config import azure_settings
 import os
-from llms.gptllm import logger # or define a new logger
+from llms.gptllm import logger  # or define a new logger
 from langchain_chroma import Chroma
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
@@ -52,18 +52,19 @@ def check_documents(directory_path: str):
         logger.error(f"Error loading TXT documents: {e}")
 
     # Load PDF files
-    for file_name in os.listdir(directory_path):
-        if file_name.endswith(".pdf"):
-            try:
-                pdf_loader = PyPDFLoader(os.path.join(directory_path, file_name))
-                pdf_documents = pdf_loader.load_and_split()
-                documents.extend(pdf_documents)
-                logger.info(f"Loaded {len(pdf_documents)} pages from {file_name}.")
-            except Exception as e:
-                logger.error(f"Error loading PDF file {file_name}: {e}")
+    pdf_files = [f for f in os.listdir(directory_path) if f.endswith(".pdf")]
+    for file_name in pdf_files:
+        try:
+            file_path = os.path.join(directory_path, file_name)
+            pdf_documents = PyPDFLoader(file_path).load_and_split()
+            documents.extend(pdf_documents)
+            logger.info(f"Loaded {len(pdf_documents)} pages from {file_name}.")
+        except Exception as e:
+            logger.error(f"Error loading PDF file {file_name}: {e}")
 
     logger.info(f"Total documents loaded: {len(documents)}")
     return documents
+
 
 def get_retriever(vector_store=chroma_vector_store):
     try:
@@ -72,11 +73,11 @@ def get_retriever(vector_store=chroma_vector_store):
         logger.error(f"Error getting Chroma store as retriever: {e}")
         raise
 
+
 def load_chroma_store(vector_store=chroma_vector_store):
     try:
         docs = check_documents(DOC_PATH)
         vector_store.add_documents(documents=docs)
-
         # vector_store.persist()
         logger.info("Chroma store successfully created and persisted.")
         print("Chroma store successfully created and data stored!")
