@@ -1,4 +1,4 @@
-# RAG Pipeline with Local and API-based LLM Support
+# RAG Pipeline with Local and API-based LLM
 
 This project implements a **Retrieval-Augmented Generation (RAG)** pipeline. It integrates document retrieval, contextual response generation, and large language model (LLM) capabilities. The pipeline supports both **local LLMs** (e.g., Ollama) and LLMs accessed via an **API**.
 
